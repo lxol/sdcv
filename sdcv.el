@@ -372,9 +372,9 @@ The result will be displayed in buffer named with
 (defun sdcv-search-simple (&optional word)
   "Search WORD simple translate result."
   (showtip
-   (sdcv-search-witch-dictionary word sdcv-dictionary-simple-list)))
+   (sdcv-search-with-dictionary word sdcv-dictionary-simple-list)))
 
-(defun sdcv-search-witch-dictionary (word dictionary-list)
+(defun sdcv-search-with-dictionary (word dictionary-list)
   "Search some WORD with dictionary list.
 Argument DICTIONARY-LIST the word that need transform."
   ;; Get translate object.
