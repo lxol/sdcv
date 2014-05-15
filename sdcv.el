@@ -356,9 +356,11 @@ The result will be displayed in buffer named with
     (setq buffer-read-only nil)
     (erase-buffer)
     (let* ((process
-            (start-process
-             "sdcv" sdcv-buffer-name "sdcv"
-             (sdcv-search-witch-dictionary word sdcv-dictionary-complete-list))))
+            (eval  `(start-process
+                    "sdcv" sdcv-buffer-name "sdcv"
+                    "-n"
+                    ,@(cl-mapcan (lambda (x) (list  "-u" x)) sdcv-dictionary-complete-list)
+                    word))))
       (set-process-sentinel
        process
        (lambda (process signal)
